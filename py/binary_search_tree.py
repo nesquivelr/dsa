@@ -113,9 +113,15 @@ class BinarySearchTree:
             print(node.data)
     def levelOrderTraversal(self, node):
         if node is not None:
-            print(node.data)
-            self.preOrderTraversal(node.left)
-            self.preOrderTraversal(node.right)
+            queue = []
+            queue.append(node)
+            while queue:
+                node = queue.pop()
+                if node is None:
+                    continue
+                print(node.data)
+                queue.append(node.left)
+                queue.append(node.right)
 
 
 if __name__ == '__main__':
@@ -123,9 +129,10 @@ if __name__ == '__main__':
     for i in range(1, 6):
         bst.add_elem(i)
 
-    if False:
-        bst.print('pre')
-        print('---')
-        bst.print('in')
-        print('---')
-        bst.print('post')
+    bst.print('pre')
+    print('---')
+    bst.print('in')
+    print('---')
+    bst.print('post')
+    print('---')
+    bst.print('level')
