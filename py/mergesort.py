@@ -24,14 +24,6 @@ def merge(a: List[int], b: List[int]):
     return output
 
 
-def mergesort(low: int, high: int):
-    if low < high:
-        mid = (low + high)/2
-        A = merge_sort(low, mid)
-        B = merge_sort(mid+1, high)
-        merge(low, mid, high)
-    return input_list
-
 def two_way_mergesort(input_list: List[int]):
     current_pass = []
     if len(input_list)%2==1:
@@ -68,14 +60,24 @@ def two_way_mergesort(input_list: List[int]):
     return current_pass[0]
 
 
+def mergesort(A: List[int]):
+    if len(A)<= 1:
+        return A
+
+    mid = len(A)//2
+    left = mergesort(A[:mid])
+    right = mergesort(A[mid:])
+    return merge(left, right)
+
 
 if __name__ == '__main__':
     a = [2, 8, 15, 18]
     b = [5, 9, 12, 17, 500]
-    print(merge(a,b))
+    print(f'inputs=\n{a}\n{b}')
+    print(f'output={merge(a,b)}')
     c = [9, 10, 3, 7, 5, 6, 4, 1, 8, 2]
-    print('input=',c)
-    print('output=',two_way_mergesort(c))
-    #input_list = [9, 3, 7, 5, 6, 4, 8, 2]
-    #print(input_list)
-    #print(mergesort(input_list))
+    print(f'input={c}')
+    print(f'output={two_way_mergesort(c)}',)
+    input_list = [9, 3, 7, 5, 6, 4, 8, 2]
+    print(f'input={input_list}')
+    print(f'output={mergesort(input_list)}')
