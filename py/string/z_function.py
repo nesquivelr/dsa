@@ -12,5 +12,11 @@ def z_function(s: str):
             r = i + z[i]
     return z
 
+def get_z(z: list[int], i: int):
+    if 0 <= i < len(z):
+        return z[i]
+    else:
+        return 0
+
 if __name__ == "__main__":
     print(z_function("aaaaaa"))

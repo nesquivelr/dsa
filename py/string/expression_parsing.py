@@ -1,3 +1,4 @@
+"""TODO"""
 def is_delim(c: str):
     return c == " "
 
@@ -10,9 +11,9 @@ def is_unary(c: str):
 def priority(op: str):
     if op < 0:
         return 3
-    if op in "*/":
+    if chr(op) in "*/":
         return 2
-    if op in "+-":
+    if chr(op) in "+-":
         return 1
     return -1
 
@@ -54,7 +55,7 @@ def evaluate(s: str):
             op.pop()
             may_be_unary = False
         elif is_op(s[i]):
-            cur_op = s[i]
+            cur_op = ord(s[i])
             if may_be_unary and is_unary(cur_op):
                 cur_op = -cur_op
             while len(op)!=0 and (
